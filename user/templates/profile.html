@@ -1,0 +1,56 @@
+{% extends 'master.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<section id="profile-management" class="d-flex align-items-center py-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="text-center mb-4">Profile Management</h1>
+                
+                <!-- Profile Update Form -->
+                 <h2 class="text-start mt-5">Edit Profile</h2>
+                <form method="POST" enctype="multipart/form-data" class="p-4 shadow-lg rounded bg-light" autocomplete="off">
+                    <!-- old details -->
+                    <div>
+                    </div>
+
+                    {% csrf_token %}
+                    <!-- Display error/success messages -->
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if message.level_tag == 'success' %}
+                                <div class="alert alert-success" role="alert">{{ message }}</div>
+                            {% else %}
+                                <div class="alert alert-primary" role="alert">{{ message }}</div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <!-- First Name -->
+                    <div class="form-group">
+                        <label for="id_first_name" class="font-weight-bold">First Name</label>
+                        <input type="text" class="form-control" id="id_first_name" name="first_name" value="{{ user.first_name }}" placeholder="Enter your first name" required>
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="form-group">
+                        <label for="id_last_name" class="font-weight-bold">Last Name</label>
+                        <input type="text" class="form-control" id="id_last_name" name="last_name" value="{{ user.last_name }}" placeholder="Enter your last name" required>
+                    </div>
+                    
+                    <!-- This will allow for only saving the date if new values added -->
+                    <input type="hidden" value="{{ user.first_name }}" name="old_first_name">
+                    <input type="hidden" value="{{ user.last_name }}" name="old_last_name">
+                    
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-block mt-3">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

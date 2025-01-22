@@ -1,0 +1,71 @@
+{% extends "master.html" %}
+
+{% block title %}Sign Up{% endblock%}
+
+{% block content %} 
+<div class="container">
+    <!-- Registration form -->
+    <form class="col-6 mx-auto card p-3 shadow-lg mt-5" method="post" enctype="multipart/form-data">
+        {% csrf_token %}  <!-- CSRF token for security -->
+
+        <!-- Registration form heading -->
+        <h1 style="text-align: center;">PrepFAST</h1>
+        <h3>Sign Up</h3>
+        <hr>
+
+        <!-- Display error/success messages -->
+        {% if messages %}
+        <div class="alert alert-primary" role="alert">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- First Name input field -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">First name</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Enter First name" name="first_name" required>
+        </div>
+
+        <!-- Last Name input field -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">Last name</label>
+            <input type="text" name="last_name" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Enter Last name" required>
+        </div>
+
+        <!-- Username input field -->
+        <div class="form-group">
+            <label for="exampleInputUsername1">Username</label>
+            <input type="text" class="form-control" name="username" id="exampleInputUsername1"
+                aria-describedby="usernameHelp" placeholder="Enter username" required>
+        </div>
+
+        <!-- Username input field -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email</label>
+            <input type="text" class="form-control" name="email" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Enter email" required>
+        </div>
+
+        <!-- Password input field -->
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" name="password" id="exampleInputPassword1"
+                placeholder="Password" required>
+        </div>
+
+        <!-- Link to login page for users who already have an account -->
+        {% if request.GET.next %}
+        <p><a href="{% url 'login' %}?next={{ request.GET.next }}">Already have an account</a> </p>
+        {% else %}
+        <p><a href="{% url 'login' %}">Already have an account</a> </p>
+        {% endif %}
+        
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock%}

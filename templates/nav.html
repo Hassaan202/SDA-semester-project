@@ -1,0 +1,28 @@
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top " style="background-color: rgba(61, 80, 123, 0.98);">
+    <div class="container d-flex align-items-center" >
+
+      <h1 class="logo me-auto"><a href="index.html">PrepFAST</a></h1>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a></li>
+          <li><a class="nav-link {% if request.resolver_match.url_name == 'ai' %}active{% endif %}" href="{% url 'ai' %}">AI</a></li>
+          <li><a class="nav-link {% if request.resolver_match.url_name == 'resources' %}active{% endif %}" href="{% url 'resources' %}">Resources</a></li>
+          <li><a class="nav-link {% if request.resolver_match.url_name == 'sharing' %}active{% endif %}" href="{% url 'sharing' %}">Sharing</a></li>
+          <li><a class="nav-link {% if request.resolver_match.url_name == 'forum' %}active{% endif %}" href="{% url 'forum' %}">Discussion</a></li>
+          <li><a class="nav-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" href="{% url 'profile' %}">Profile</a></li>
+          <li><a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contact</a></li>
+
+          {% if user.is_authenticated %}
+          <li><a class="getstarted" href="{% url 'logout' %}">Log out</a></li>
+          {% else %}
+          <li><a class="getstarted" href="{% url 'login' %}">Login</a></li>
+          {% endif %}
+
+        </ul>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header>
+  <!-- End Header -->

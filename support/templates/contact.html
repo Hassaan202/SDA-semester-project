@@ -1,0 +1,96 @@
+{% extends "master.html" %}
+
+{% block title %} Contact {% endblock %}
+
+{% block content %} 
+ <!-- ======= Contact Section ======= -->
+ <section id="contact" class="contact mt-5">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Hi there, feel free to write to us for any queries.</p>
+      </div>
+
+      <div class="row">
+        <!-- first column -->
+        <div class="col-lg-5 d-flex align-items-stretch">
+          <div class="info">
+            <div class="address">
+              <i class="bi bi-geo-alt"></i>
+              <h4>Location:</h4>
+              <p>FAST-NUCES, Lahore</p>
+            </div>
+
+            <div class="email">
+              <i class="bi bi-envelope"></i>
+              <h4>Email:</h4>
+              <p>prepFast@gmail.com</p>
+            </div>
+
+            <div class="phone">
+              <i class="bi bi-phone"></i>
+              <h4>Call:</h4>
+              <p>+92 333 4455667</p>
+            </div>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.551513026613!2d74.30043917508307!3d31.481521174231737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391903f08ebc7e8b%3A0x47e934f4cd34790!2sFAST%20NUCES%20Lahore!5e0!3m2!1sen!2s!4v1733081865370!5m2!1sen!2s"  frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+          </div>
+        </div>
+
+
+        <!-- form starts here -->
+        <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+          <form method="post" enctype="multipart/form-data" class="card p-3">
+
+            {% csrf_token %}  <!-- CSRF token for security -->
+            
+            <!-- Display error/success messages -->
+            {% if messages %}
+            <div class="alert alert-success" role="alert">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            {% if user.is_authenticated %}
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="name">Name</label>
+                <input type="text" name="name" class="form-control" id="name" value="{{ user.username }}" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="name">Email</label>
+                <input type="email" class="form-control" name="email" id="email" value="{{ user.email }}" required>
+              </div>
+            </div>
+            {% else %}
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="name">Name</label>
+                <input type="text" name="name" class="form-control" id="name" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="name">Email</label>
+                <input type="email" class="form-control" name="email" id="email" required>
+              </div>
+            </div>
+            {% endif %}
+            <div class="form-group">
+              <label for="name">Subject</label>
+              <input type="text" class="form-control" name="subject" id="subject" required>
+            </div>
+            <div class="form-group">
+              <label for="name">Message</label>
+              <textarea class="form-control" name="message" rows="10" required></textarea>
+            </div>
+            <div class="text-center"><button type="submit" class="btn bg-info">Send Message</button></div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section -->
+{% endblock %}

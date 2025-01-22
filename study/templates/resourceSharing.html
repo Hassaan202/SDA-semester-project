@@ -1,0 +1,66 @@
+{% extends "master.html" %}
+
+{% block title %}Resource Sharing{% endblock %}
+
+{% block content %}
+<!-- Resource Sharing Section -->
+<main id="main" class="col-lg-10 mx-auto">
+    <section class="d-flex align-items-center">
+        <div class="container">
+            <h1>Share a Resource</h1>
+
+            <!-- Display success messages -->
+            {% if messages %}
+                <div class="alert alert-success" role="alert">
+                    {% for message in messages %}
+                        {{ message }}<br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!-- Upload Form -->
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <!-- Select Subject -->
+                <div class="mb-4">
+                    <label for="subject" class="form-label">Select a Subject:</label>
+                    <select name="subject" id="subject" class="form-select" required>
+                        <option value="">-- Choose a subject --</option>
+                        {% for subject in subjects %}
+                            <option value="{{ subject.id }}">{{ subject.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- File Upload -->
+                <div class="mb-4">
+                    <label for="file" class="form-label">Upload File:</label>
+                    <input type="file" name="file" id="file" class="form-control" required>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+
+
+            <!-- Display uploaded resources for each subject -->
+            <h2 class="mt-5">Uploaded Resources</h2>
+            {% for subject, resources in resources_by_subject.items %}
+                <h4>{{ subject.name }}</h4>
+                {% if resources.exists %}
+                    <ul class="list-group mb-3">
+                        {% for resource in resources %}
+                            <li class="list-group-item">
+                                {{ resource.file.name }} - Uploaded on {{ resource.uploaded_at }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No resources uploaded for this subject yet.</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}

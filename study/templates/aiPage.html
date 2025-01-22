@@ -1,0 +1,66 @@
+{% extends 'master.html' %}
+
+{% block title %} 
+AI Question Paper
+{% endblock %} 
+
+{% block content %}
+<div class="container my-5 py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <h1 class="text-center mb-4">AI-Powered Question Paper</h1>
+            
+            <!-- Subject Selection Form -->
+            <form method="POST" class="mb-4">
+                {% csrf_token %}
+                <label for="subject" class="form-label">Select a Subject:</label>
+                <select name="subject" id="subject" class="form-select" onchange="this.form.submit()">
+                    <option value="">-- Choose a subject --</option>
+                    {% for subject in subList %}
+                        <option value="{{ subject.id }}" {% if selected_subject and subject.id == selected_subject.id %}selected{% endif %}>
+                            {{ subject.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </form>
+
+            <!-- Display Error Messages -->
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endif %}
+            
+            <!-- Display Generated Question Paper -->
+            {% if selected_subject.name == 'Computer Networks' %}
+            {% if paper_content %}
+            <div class="card shadow-lg mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Generated Question Paper</h3>
+                </div>
+                <div class="card-body">
+                    <pre class="p-3 bg-light rounded" style="white-space: pre-wrap; word-wrap: break-word;">
+{{ paper_content }}
+                    </pre>
+                </div>
+            </div>
+            {% endif %}
+            {% endif %}
+
+            <!-- Display AI-Generated Questions -->
+            {% if generated_questions %}
+            <div class="card shadow-lg mb-4">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">AI-Generated Questions</h3>
+                </div>
+                <div class="card-body">
+                    <pre class="p-3 bg-light rounded" style="white-space: pre-wrap; word-wrap: break-word;">
+{{ generated_questions }}
+                    </pre>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

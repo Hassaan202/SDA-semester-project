@@ -1,0 +1,239 @@
+{% extends "master.html" %}
+
+<!-- Need to include this after the extend tag for this work properly -->
+{% load static %}
+
+{% block title %}Home{% endblock%}
+
+{% block content %} 
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+
+    <div class="container pt-5 mt-5">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>AI Powered Learning</h1>
+          <h2>Making knowledge accessible to all</h2>
+          {% if not user.is_authenticated %}
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="{% url 'login' %}" class="btn-get-started">Get Started</a>
+          </div>
+          {% endif %}
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="{% static 'img/hero-img.png' %}" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+<!-- ======= About Us Section ======= -->
+<section id="about" class="about">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>About Us</h2>
+    </div>
+
+    <div class="row content">
+      <div class="col-lg-6">
+        <p>
+          Prepfast is a cutting-edge platform leveraging artificial intelligence to revolutionize personalized learning and skill enhancement. Our mission is to make education smarter, faster, and more accessible for everyone.
+        </p>
+        <ul>
+          <li><i class="ri-check-double-line"></i> AI-powered tools to customize your learning journey</li>
+          <li><i class="ri-check-double-line"></i> Real-time performance tracking and feedback</li>
+          <li><i class="ri-check-double-line"></i> Adaptive content designed for maximum efficiency</li>
+        </ul>
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0">
+        <p>
+          Whether you're preparing for competitive exams, upskilling for your career, or exploring new interests, Prepfast provides you with intelligent resources tailored to your needs. Our platform combines advanced algorithms with intuitive design to empower learners worldwide.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End About Us Section -->
+
+
+  <!-- ======= Why Us Section ======= -->
+<section id="why-us" class="why-us section-bg">
+  <div class="container-fluid" data-aos="fade-up">
+
+    <div class="row">
+
+      <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch order-2 order-lg-1">
+
+        <div class="content">
+          <h3>Why Choose <strong>Prepfast</strong>?</h3>
+          <p>
+            Prepfast stands out as your ultimate AI-driven learning companion, offering innovative solutions to make your preparation smarter, faster, and more effective.
+          </p>
+        </div>
+
+        <div class="accordion-list">
+          <ul>
+            <li>
+              <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Personalized learning paths tailored to your goals <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
+                <p>
+                  Our advanced AI algorithms adapt to your learning pace and style, ensuring a customized experience that aligns perfectly with your objectives.
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Real-time analytics to track your progress <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
+                <p>
+                  Stay informed with detailed performance insights, allowing you to identify strengths and focus on areas that need improvement for optimal results.
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Engaging and adaptive content for maximum efficiency <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
+                <p>
+                  Access a dynamic library of resources, practice tests, and interactive modules that adjust in difficulty based on your performance, keeping you challenged and motivated.
+                </p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" 
+      style="background-image: url('{% static "img/why-us.png" %}');" 
+      data-aos="zoom-in" data-aos-delay="150">
+        &nbsp;
+      </div>
+    
+    </div>
+
+  </div>
+</section><!-- End Why Us Section -->
+
+
+  <!-- ======= Services Section ======= -->
+<section id="services" class="services section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Services</h2>
+      <p>Prepfast offers a range of AI-powered services designed to simplify learning, boost productivity, and help users achieve their goals efficiently. Explore our innovative solutions tailored for success in the digital age.</p>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+        <div class="icon-box">
+          <div class="icon"><i class="bx bx-brain"></i></div>
+          <h4><a href="">AI-Powered Personalization</a></h4>
+          <p>Get a fully customized learning experience tailored to your strengths, weaknesses, and objectives using advanced AI algorithms.</p>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+        <div class="icon-box">
+          <div class="icon"><i class="bx bx-bar-chart"></i></div>
+          <h4><a href="">Real-Time Performance Analytics</a></h4>
+          <p>Track your progress with detailed insights and actionable recommendations to continuously improve and stay on top.</p>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
+        <div class="icon-box">
+          <div class="icon"><i class="bx bx-book"></i></div>
+          <h4><a href="">Dynamic Learning Resources</a></h4>
+          <p>Access an extensive library of adaptive study materials, quizzes, and practice tests that evolve as you learn.</p>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
+        <div class="icon-box">
+          <div class="icon"><i class="bx bx-support"></i></div>
+          <h4><a href="">24/7 AI Support</a></h4>
+          <p>Benefit from round-the-clock AI assistance for guidance, doubts, and motivation, ensuring you’re never alone in your journey.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section><!-- End Services Section -->
+
+   <!-- ======= Team Section ======= -->
+<section id="team" class="team section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Team</h2>
+      <p>Meet the brilliant minds behind Prepfast. Our team is dedicated to crafting innovative AI solutions, seamless user experiences, and cutting-edge technology to empower learners worldwide.</p>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-6">
+        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+          <div class="member-info">
+            <h4>Ahmad Abdul</h4>
+            <span>AI Specialist</span>
+            <p>Driving intelligent algorithms and ensuring our AI solutions are both innovative and impactful.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mt-4 mt-lg-0">
+        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
+          <div class="member-info">
+            <h4>M Ibrahim</h4>
+            <span>Frontend Developer</span>
+            <p>Designing intuitive user interfaces that offer a seamless and engaging learning experience.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mt-4">
+        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
+          <div class="member-info">
+            <h4>M Hassaan Raza</h4>
+            <span>Backend Developer</span>
+            <p>Ensuring robust and scalable server-side architecture for smooth performance and reliability.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mt-4">
+        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
+          <div class="member-info">
+            <h4>Burhan Bhatti</h4>
+            <span>Backend Developer</span>
+            <p>Developing efficient APIs and maintaining database integrity to power dynamic functionalities.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mt-4">
+        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="500">
+          <div class="member-info">
+            <h4>Mujtaba Ahmed</h4>
+            <span>Backend Developer</span>
+            <p>Specializing in optimizing backend operations to ensure scalability and security of the platform.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section><!-- End Team Section -->
+
+  </main><!-- End #main -->
+
+{% endblock %}
+
+

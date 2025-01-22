@@ -1,0 +1,78 @@
+{% extends 'master.html' %}
+
+{% block title %} 
+Resources
+{% endblock %} 
+
+{% block content %}
+<main id="main">
+    <section class="d-flex align-items-center col-lg-10 mx-auto">
+        <div class="container">
+            <h1>Resource Library</h1>
+
+            <!-- Subject Selection Form -->
+            <form method="POST" class="mb-4">
+                {% csrf_token %}
+                <label for="subject" class="form-label">Select a Subject:</label>
+                <select name="subject" id="subject" class="form-select" onchange="this.form.submit()">
+                    <option value="">-- Choose a subject --</option>
+                    {% for subject in subList %}
+                        <option value="{{ subject.id }}" {% if selected_subject and subject.id == selected_subject.id %}selected{% endif %}>
+                            {{ subject.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </form>
+
+            {% if selected_subject %}
+                <h2>Resources for {{ selected_subject.name }}</h2>
+
+                <!-- Past Papers -->
+                <h3>Past Papers</h3>
+                {% if pastPapers %}
+                    <ul class="list-group mb-4">
+                        {% for paper in pastPapers %}
+                            <li class="list-group-item">
+                                <a href="{{ paper.fileLink }}" target="_blank" class="fw-bold">{{ paper.fileName }}</a>
+                                <p class="text-muted m-0 lh-1 small">Uploaded on: {{ paper.uploaded_at|date:"D, M d Y H:i:s" }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No past papers available for this subject.</p>
+                {% endif %}
+
+                <!-- Books -->
+                <h3>Books</h3>
+                {% if books %}
+                    <ul class="list-group mb-4">
+                        {% for book in books %}
+                            <li class="list-group-item">
+                                <a href="{{ book.fileLink }}" target="_blank" class="fw-bold">{{ book.fileName }}</a>
+                                <p class="text-muted m-0 lh-1 small">Uploaded on: {{ book.uploaded_at|date:"D, M d Y H:i:s" }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No books available for this subject.</p>
+                {% endif %}
+
+                <!-- Playlists -->
+                <h3>Playlists</h3>
+                {% if playLists %}
+                    <ul class="list-group mb-4">
+                        {% for playlist in playLists %}
+                            <li class="list-group-item">
+                                <a href="{{ playlist.fileLink }}" target="_blank" class="fw-bold">{{ playlist.fileName }}</a>
+                                <p class="text-muted m-0 lh-1 small">Uploaded on: {{ playlist.uploaded_at|date:"D, M d Y H:i:s" }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No playlists available for this subject.</p>
+                {% endif %}
+            {% endif %}
+        </div>
+    </section>
+</main>
+{% endblock %}

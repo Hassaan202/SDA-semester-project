@@ -1,0 +1,65 @@
+{% extends "master.html" %}
+
+{% block title %}Discussion Forum{% endblock %}
+
+{% block content %}
+<!-- Discussion Forum Section -->
+<main id="main">
+    <section class="d-flex align-items-center col-lg-10 mx-auto">
+        <div class="container">
+            <h1>Discussion Forum</h1>
+
+            <!-- Subject Selection Form -->
+            <form method="POST" class="mb-4">
+                {% csrf_token %}
+            
+                <!-- Display error/success messages -->
+                {% if messages %}
+                <div class="alert alert-success" role="alert">
+                    {% for message in messages %}
+                    {{ message }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <label for="subject" class="form-label">Select a Subject:</label>
+                <select name="subject" id="subject" class="form-select" onchange="this.form.submit()">
+                    <option value="">-- Choose a subject --</option>
+                    {% for subject in subjects %}
+                        <option value="{{ subject.id }}" {% if selected_subject and subject.id == selected_subject.id %}selected{% endif %}>
+                            {{ subject.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </form>
+
+            {% if selected_subject %}
+                <h2>Discussions for {{ selected_subject.name }}</h2>
+
+                <!-- Existing Discussions -->
+                <ul class="list-group mb-4">
+                    {% for discussion in discussions %}
+                        <li class="list-group-item">
+                            <p>{{ discussion.content }}</p>
+                            <p class="text-muted m-0 lh-1 small">Posted by: {{ discussion.user_ID.username }}</p>
+                            <p class="text-muted m-0 lh-1 small">Last updated at: {{ discussion.updated_at|date:"D, M d Y H:i:s" }}</p>
+                            <hr class="m-2 ms-0">
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <!-- Create New Discussion -->
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="subject" value="{{ selected_subject.id }}">
+                    <div class="mb-3">
+                        <label for="discussion_content" class="form-label fw-bold">New Discussion:</label>
+                        <textarea name="discussion_content" id="discussion_content" class="form-control" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Discussion</button>
+                </form>
+            {% endif %}
+        </div>
+    </section>
+</main>
+{% endblock %}

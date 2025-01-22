@@ -1,0 +1,25 @@
+{% extends 'master.html' %}
+
+{% block title %} 
+Test
+{% endblock %} 
+
+{% block content %}
+<div class="mt-5">
+
+    {% if user.is_authenticated %}
+    <h3>
+        {{user.username}}
+    </h3>
+    <h3>
+        {{user.first_name}}
+    </h3>
+    <h3>
+        {{user.last_name}}
+    </h3>
+    {% else %}
+    <h3>User not logged in</h3>
+    {% endif %}
+
+</div>
+{% endblock %} 
