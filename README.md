@@ -24,7 +24,16 @@
     <li>Resource sharing option to enable students upload their shared resources.</li>
 </ul>
 
-<h2>Screnshots of the Project</h2>
+<h3>Team Members</h3>
+<ul>
+  <li><a href="https://github.com/BurhanBhatti165" target="_blank">Burhan Bhatti</a></li>
+  <li><a href="https://github.com/ahmadtariq1" target="_blank">Ahmed Tariq</a></li>
+  <li><a href="https://github.com/Mujtaba6616" target="_blank">Mujtaba Ahmed</a></li>
+  <li>Ibrahim Sohail</li>
+</ul>
+
+
+<h3>Screnshots of the Project</h3>
 <img width="1280" alt="Screenshot 2025-01-23 at 10 36 27 AM" src="https://github.com/user-attachments/assets/1d7eadb5-7ea9-445c-8fcb-294c473363b5" />
 <img width="1280" alt="Screenshot 2025-01-23 at 10 36 34 AM" src="https://github.com/user-attachments/assets/60952716-1c8d-45ec-becf-d1a4a46ca262" />
 <img width="1280" alt="Screenshot 2025-01-23 at 10 36 42 AM" src="https://github.com/user-attachments/assets/b3eaaf72-c524-4732-a069-6a608adefb38" />
