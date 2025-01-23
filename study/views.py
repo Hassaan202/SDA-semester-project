@@ -310,7 +310,7 @@ def generate_question_list(questions_with_tables):
 
 
 def getAIresponse(prompt):
-    genai.configure(api_key="AIzaSyB8lMnXG_nm_Uy35C56-h1HJW_N5EJ_3kA")
+    genai.configure(api_key="HIDDEN")
     model = genai.GenerativeModel("gemini-1.5-flash")
     response = model.generate_content(prompt)
     return response.text
