@@ -29,7 +29,7 @@
   <li><a href="https://github.com/BurhanBhatti165" target="_blank">Burhan Bhatti</a></li>
   <li><a href="https://github.com/ahmadtariq1" target="_blank">Ahmed Tariq</a></li>
   <li><a href="https://github.com/Mujtaba6616" target="_blank">Mujtaba Ahmed</a></li>
-  <li>Ibrahim Sohail</li>
+  <li><a href="https://github.com/ibrahimsohail077" target="_blank">Ibrahim Sohail</a></li>
 </ul>
 
 
