@@ -15,7 +15,7 @@
 
 <h3>🧠 AI-Powered Assistance</h3>
 <ul>
-    <li>Instant question-answering and .</li>
+    <li>Instant question-answering.</li>
 </ul>
 
 <h3>👨‍🏫 Collaborative Learning</h3>
